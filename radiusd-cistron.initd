@@ -14,12 +14,12 @@ case "$1" in
   start)
 	show Starting RADIUSD server
 	daemon radiusd -y
-	touch /var/lock/subsys/radiusd
+	touch /var/lock/subsys/radius
 	;;
   stop)
 	show Stopping RADIUSD server
 	killproc radiusd
-	rm -f /var/lock/subsys/radiusd
+	rm -f /var/lock/subsys/radius
 	;;
   restart)
 	$0 stop
