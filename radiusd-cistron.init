@@ -33,7 +33,7 @@ case "$1" in
   start)
 	if [ ! -f /var/lock/subsys/radius ]; then
 		msg_starting "Radius-Cistron Server"
-		daemon radiusd -y
+		daemon radiusd -y -Z
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/radius
 	else
