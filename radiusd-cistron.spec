@@ -18,8 +18,8 @@ Patch2:		%{name}-buff_over_fix.patch
 URL:		http://www.radius.cistron.nl/
 Requires:	logrotate
 Requires(post):	/sbin/chkconfig
-Requires(preun):/sbin/chkconfig
 Requires(post):	fileutils
+Requires(preun):/sbin/chkconfig
 Provides:	radius
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	radius
@@ -98,8 +98,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{etc/{raddb,logrotate.d,rc.d/init.d,pam.d},var/log/radacct} \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
 
-touch $RPM_BUILD_ROOT/etc/pam.d/radius
-
 %{__make} -C src install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR="%{_bindir}" \
@@ -116,6 +114,7 @@ install doc/builddbm.8rad $RPM_BUILD_ROOT%{_mandir}/man8/builddbm.5
 install doc/clients.5rad $RPM_BUILD_ROOT%{_mandir}/man5/clients.5
 install doc/naslist.5rad $RPM_BUILD_ROOT%{_mandir}/man5/naslist.5
 
+touch $RPM_BUILD_ROOT/etc/pam.d/radius
 touch $RPM_BUILD_ROOT/var/log/rad{utmp,wtmp,ius.log}
 
 %clean
@@ -140,22 +139,16 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{ChangeLog,FAQ.txt}
-%doc doc/README* todo/TODO
-
-%attr(750,root,root) %dir /var/log/radacct
-%attr(750,root,root) %dir %{_sysconfdir}/raddb
-
+%doc doc/{ChangeLog,FAQ.txt,README*} todo/TODO
 %attr(640,root,root) %config %verify(not size mtime md5) %{_sysconfdir}/raddb/*
-
+%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/pam.d/radius
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
-%attr(644,root,root) %{_mandir}/*/*
-
 %attr(754,root,root) /etc/rc.d/init.d/radius
 %attr(640,root,root) /etc/logrotate.d/radius
-%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/pam.d/radius
-
+%attr(750,root,root) %dir /var/log/radacct
+%attr(750,root,root) %dir %{_sysconfdir}/raddb
 %attr(640,root,root) %ghost /var/log/radutmp
 %attr(640,root,root) %ghost /var/log/radwtmp
 %attr(640,root,root) %ghost /var/log/radius.log
+%attr(644,root,root) %{_mandir}/*/*
