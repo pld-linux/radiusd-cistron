@@ -1,11 +1,11 @@
-# $Revision: 1.6 $
+# $Revision: 1.7 $
 Summary:	RADIUS Server 
 Name:		radiusd-cistron
 Version:	1.6.1
 Release:	1
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
-Copyright:	GPL
+License:	GPL
 Source0:	%{name}-%{version}-stable.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.initd
@@ -16,7 +16,7 @@ Provides:	radius
 Obsoletes:	radius
 
 %description
-RADIUS server with a lot of functions. Short overview: 
+RADIUS server with a lot of functions. Short overview:
 
 - PAM support
 - Supports access based on huntgroups
@@ -26,8 +26,8 @@ RADIUS server with a lot of functions. Short overview:
 - Keeps a list of logged in users (radutmp file)
 - "radwho" program can be installed as "fingerd"
 - Logs both UNIX "wtmp" file format and RADIUS detail logfiles
-- Supports Simultaneous-Use = X parameter. Yes, this means
-  that you can now prevent double logins!
+- Supports Simultaneous-Use = X parameter. Yes, this means that you
+  can now prevent double logins!
 
 %prep
 %setup -q -n %{name}-%{version}-stable
@@ -38,8 +38,8 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{etc/{raddb,logrotate.d,rc.d/init.d,pam.d},var/log/radacct}
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
+install -d $RPM_BUILD_ROOT/{etc/{raddb,logrotate.d,rc.d/init.d,pam.d},var/log/radacct} \
+	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
 
 cd src
 %{__make} install BINDIR="$RPM_BUILD_ROOT%{_bindir}" SBINDIR="$RPM_BUILD_ROOT%{_sbindir}"
