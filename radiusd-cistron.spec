@@ -2,23 +2,23 @@ Summary:	RADIUS Server
 Summary(pl):	Serwer RADIUS
 Name:		radiusd-cistron
 Version:	1.6.1
-Release:	1
+Release:	2
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 License:	GPL
-Source0:	%{name}-%{version}-stable.tar.gz
+Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}-stable.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.initd
 Source3:	%{name}.logrotate
-URL:		http://www.miquels.cistrom.nl/radius
+URL:		http://www.radius.cistrom.nl/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Prereq:		/sbin/chkconfig
 Provides:	radius
 Obsoletes:	radius
 
 %description
 RADIUS server with a lot of functions. Short overview:
-
 - PAM support
 - Supports access based on huntgroups
 - Multiple DEFAULT entries in users file
@@ -29,6 +29,19 @@ RADIUS server with a lot of functions. Short overview:
 - Logs both UNIX "wtmp" file format and RADIUS detail logfiles
 - Supports Simultaneous-Use = X parameter. Yes, this means that you
   can now prevent double logins!
+
+%description -l pl
+Serwer RADIUS z wieloma funkcjami. W skrócie:
+- obs³uga PAM
+- obs³uga dostêpu bazuj±ca na huntgroups
+- wiele wpisów DEFAULT w pliku users
+- wszystkie wpisy w pliku users mog± byæ opcjonalnie "fall through"
+- buforuje wszystkie pliki konfiguracyjne w pamiêci
+- trzyma listê zalogowanych u¿ytkowników (plik radutmp)
+- program radwho mo¿e byæ zainstalowany jako fingerd
+- loguje zarówno w uniksowym formacie wtmp i logach szczegó³owych RADIUS
+- obs³uguje parametr Simultaneous-Use = X - tak, w ten sposób mo¿esz
+  unikn±æ podwójnego logowania!
 
 %prep
 %setup -q -n %{name}-%{version}-stable
@@ -66,6 +79,9 @@ gzip -9nf COPYRIGHT.Cistron COPYRIGHT.Livingston todo/* \
 	doc/{README.usersfile,README.simul,INSTALL.OLD} \
 	doc/{Makefile.README,README.cisco}
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 touch /var/log/radutmp
 touch /var/log/radwtmp
@@ -82,9 +98,6 @@ if [ "$1" = "0" ]; then
 	/etc/rc.d/init.d/radius stop >&2
 	/sbin/chkconfig --del radius
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
