@@ -1,5 +1,5 @@
 # You can use this to rotate the /var/log/radwtmp, simply copy it to
-# /etc/logrotate.d/radiusd
+# /etc/logrotate.d/radius
 
 # if you use defail files, You can uncomment the next block and
 # edit it accordling your /etc/raddb/naslist file. If you comment
@@ -29,6 +29,6 @@
 
 /var/log/radwtmp {
 	postrotate
-		/etc/rc.d/init.d/radiusd reload
+		/etc/rc.d/init.d/radius reload
 	endscript
 }
