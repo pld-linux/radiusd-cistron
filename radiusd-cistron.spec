@@ -12,6 +12,7 @@ Source1:	%{name}.pamd
 Source2:	%{name}.init
 Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-prefix.patch
 URL:		http://www.radius.cistron.nl/
 Requires:	logrotate
 Requires(post):	/sbin/chkconfig
@@ -75,12 +76,18 @@ Servidor RADIUS com muitas funções. Visão geral:
   você pode evitar logins duplos!, inclusive com o Cyclades PathRas.
 
 %prep
-%setup -q
+%setup  -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cd src
-%{__make} CC="%{__cc}" PAM=-DPAM PAMLIB="-lpam -ldl" CFLAGS="%{rpmcflags}"
+%{__make} \
+	CC="%{__cc}" \
+	PAM="-DPAM" \
+	PAMLIB="-lpam -ldl" \
+	LCRYPT="-lcrypt" \
+	CFLAGS="%{rpmcflags}"
 cd ..
 
 %install
