@@ -69,19 +69,10 @@ gzip -9nf COPYRIGHT.Cistron COPYRIGHT.Livingston todo/* \
 %post
 touch /var/log/radutmp
 touch /var/log/radwtmp
-/sbin/chkconfig --add radius
-if test -r /var/lock/subsys/radius; then
-	/etc/rc.d/init.d/radius stop >&2
-	/etc/rc.d/init.d/radius start >&2
-else
-	echo "Run \"/etc/rc.d/init.d/radius start\" to start radius daemon."
-fi
+NAME=radius; DESC="radius daemon"; %chkconfig_add
 
 %preun
-if [ "$1" = "0" ]; then
-	/etc/rc.d/init.d/radius stop >&2
-	/sbin/chkconfig --del radius
-fi
+NAME=radius; %chkconfig_del
 
 %clean
 rm -rf $RPM_BUILD_ROOT
