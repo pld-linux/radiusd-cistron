@@ -29,17 +29,15 @@ else
 fi
 
 RETVAL=0
-
-
 case "$1" in
   start)
 	if [ ! -f /var/lock/subsys/radius ]; then
 		msg_starting "Radius-Cistron Server"
 		daemon radiusd -y
+		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/radius
 	else
 		msg_already_running "Radius-Cistron Server"
-		RETVAL=1
 	fi
 	;;
   stop)
@@ -49,19 +47,20 @@ case "$1" in
 		rm -f /var/lock/subsys/radius >/dev/null 2>&1
 	else
 		msg_not_running "Radius-Cistron Server"
-		RETVAL=1
 	fi
 	;;
   status)
 	status radiusd
+	exit $?
 	;;
-  restart|reload)
+  restart|force-reload)
 	$0 stop
 	$0 start
+	exit $?
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|reload|status}"
-	exit 1
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
 esac
 
 exit $RETVAL
