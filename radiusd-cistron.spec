@@ -1,4 +1,5 @@
-Summary:	RADIUS Server 
+Summary:	RADIUS Server
+Summary(pl):	Serwer RADIUS
 Name:		radiusd-cistron
 Version:	1.6.1
 Release:	1
@@ -33,7 +34,7 @@ RADIUS server with a lot of functions. Short overview:
 %setup -q -n %{name}-%{version}-stable
 %build
 cd src
-%{__make} PAM=-DPAM PAMLIB="-lpam -ldl" CFLAGS="$RPM_OPT_FLAGS"
+%{__make} PAM=-DPAM PAMLIB="-lpam -ldl" CFLAGS="%{rpmcflags}"
 cd ..
 
 %install
@@ -60,11 +61,10 @@ touch 			$RPM_BUILD_ROOT/var/log/radutmp
 touch 			$RPM_BUILD_ROOT/var/log/radwtmp
 touch 			$RPM_BUILD_ROOT/var/log/radius.log
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
+gzip -9nf COPYRIGHT.Cistron COPYRIGHT.Livingston todo/* \
 	doc/{ChangeLog,README,README.pam,README.proxy} \
 	doc/{README.usersfile,README.simul,INSTALL.OLD} \
-	doc/{Makefile.README,README.cisco} \
-	{COPYRIGHT.Cistron,COPYRIGHT.Livingston,todo/*}
+	doc/{Makefile.README,README.cisco}
 
 %post
 touch /var/log/radutmp
