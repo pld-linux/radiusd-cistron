@@ -5,17 +5,19 @@ Summary(pt_BR):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
 Release:	1
-Group:		Networking/Daemons
 License:	GPL
+Group:		Networking/Daemons
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.init
 Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
-URL:		http://www.radius.cistrom.nl/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Prereq:		/sbin/chkconfig
+URL:		http://www.radius.cistron.nl/
+Requires(post):	/sbin/chkconfig
+Requires(preun):/sbin/chkconfig
+Requires(post):	fileutils
 Provides:	radius
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	radius
 
 %description
@@ -94,18 +96,16 @@ touch $RPM_BUILD_ROOT/etc/pam.d/radius
 	MANDIR="%{_mandir}" \
 	RADIUS_DIR="%{_sysconfdir}/raddb"
 
-install %{SOURCE1}	$RPM_BUILD_ROOT/etc/pam.d/radius
-install %{SOURCE2}	$RPM_BUILD_ROOT/etc/rc.d/init.d/radius
-install %{SOURCE3}	$RPM_BUILD_ROOT/etc/logrotate.d/radius
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/radius
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/radius
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/logrotate.d/radius
 
-install raddb/* 	$RPM_BUILD_ROOT%{_sysconfdir}/raddb
-install doc/builddbm.8rad	$RPM_BUILD_ROOT%{_mandir}/man8/builddbm.5
-install doc/clients.5rad	$RPM_BUILD_ROOT%{_mandir}/man5/clients.5
-install doc/naslist.5rad	$RPM_BUILD_ROOT%{_mandir}/man5/naslist.5
+install raddb/* $RPM_BUILD_ROOT%{_sysconfdir}/raddb
+install doc/builddbm.8rad $RPM_BUILD_ROOT%{_mandir}/man8/builddbm.5
+install doc/clients.5rad $RPM_BUILD_ROOT%{_mandir}/man5/clients.5
+install doc/naslist.5rad $RPM_BUILD_ROOT%{_mandir}/man5/naslist.5
 
-touch 			$RPM_BUILD_ROOT/var/log/radutmp
-touch 			$RPM_BUILD_ROOT/var/log/radwtmp
-touch 			$RPM_BUILD_ROOT/var/log/radius.log
+touch $RPM_BUILD_ROOT/var/log/rad{utmp,wtmp,ius.log}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -118,6 +118,8 @@ if [ -f /var/lock/subsys/radius ]; then
 else
 	echo "Run \"/etc/rc.d/init.d/radius start\" to start radius daemon."
 fi
+touch /var/log/rad{utmp,wtmp,ius.log}
+chmod 640 /var/log/rad{utmp,wtmp,ius.log}
 
 %preun
 if [ "$1" = "0" ]; then
