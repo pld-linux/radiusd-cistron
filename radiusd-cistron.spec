@@ -15,6 +15,7 @@ Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-prefix.patch
 Patch2:		%{name}-buff_over_fix.patch
+Patch3:		%{name}-makefile.patch
 URL:		http://www.radius.cistron.nl/
 Requires:	logrotate
 Requires(post):	/sbin/chkconfig
@@ -82,6 +83,7 @@ Servidor RADIUS com muitas funções. Visão geral:
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 cd src
