@@ -7,7 +7,7 @@ Group:		Networking/Daemons
 License:	GPL
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}-stable.tar.gz
 Source1:	%{name}.pamd
-Source2:	%{name}.initd
+Source2:	%{name}.init
 Source3:	%{name}.logrotate
 URL:		http://www.radius.cistrom.nl/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
