@@ -4,8 +4,6 @@ Name:		radiusd-cistron
 Version:	1.6.1
 Release:	2
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 License:	GPL
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}-stable.tar.gz
 Source1:	%{name}.pamd
