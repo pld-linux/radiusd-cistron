@@ -8,6 +8,7 @@ Release:	2
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
+# Source0-md5:	16084870890fd2ec577dbe183b51a379
 Source1:	%{name}.pamd
 Source2:	%{name}.init
 Source3:	%{name}.logrotate
