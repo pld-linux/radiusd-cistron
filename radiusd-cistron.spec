@@ -1,4 +1,4 @@
-# $Revision: 1.2 $
+# $Revision: 1.3 $
 Summary:	RADIUS Server 
 Name:		radiusd-cistron
 Version:	1.6.1
@@ -9,7 +9,7 @@ Copyright:	GPL
 Source0:	%{name}-%{version}-stable.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.initd
-Source3:	%{name}.log
+Source3:	%{name}.logrotate
 URL:		http://www.miquels.cistrom.nl/radius
 BuildRoot:	/tmp/%{name}-%{version}-root
 Provides:	radius
