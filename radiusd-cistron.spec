@@ -1,9 +1,9 @@
-# $Revision: 1.7 $
 Summary:	RADIUS Server 
 Name:		radiusd-cistron
 Version:	1.6.1
 Release:	1
 Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 License:	GPL
 Source0:	%{name}-%{version}-stable.tar.gz
