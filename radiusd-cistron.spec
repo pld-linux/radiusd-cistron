@@ -4,7 +4,7 @@ Summary(pl):	Serwer RADIUS
 Summary(pt_BR):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
@@ -14,6 +14,7 @@ Source2:	%{name}.init
 Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-prefix.patch
+Patch2:		%{name}-buff_over_fix.patch
 URL:		http://www.radius.cistron.nl/
 Requires:	logrotate
 Requires(post):	/sbin/chkconfig
@@ -80,6 +81,7 @@ Servidor RADIUS com muitas funções. Visão geral:
 %setup  -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 cd src
