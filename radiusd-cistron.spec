@@ -1,4 +1,4 @@
-# $Revision: 1.5 $
+# $Revision: 1.6 $
 Summary:	RADIUS Server 
 Name:		radiusd-cistron
 Version:	1.6.1
@@ -33,7 +33,7 @@ RADIUS server with a lot of functions. Short overview:
 %setup -q -n %{name}-%{version}-stable
 %build
 cd src
-make PAM=-DPAM PAMLIB="-lpam -ldl" CFLAGS="$RPM_OPT_FLAGS"
+%{__make} PAM=-DPAM PAMLIB="-lpam -ldl" CFLAGS="$RPM_OPT_FLAGS"
 cd ..
 
 %install
@@ -42,7 +42,7 @@ install -d $RPM_BUILD_ROOT/{etc/{raddb,logrotate.d,rc.d/init.d,pam.d},var/log/ra
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
 
 cd src
-make install BINDIR="$RPM_BUILD_ROOT%{_bindir}" SBINDIR="$RPM_BUILD_ROOT%{_sbindir}"
+%{__make} install BINDIR="$RPM_BUILD_ROOT%{_bindir}" SBINDIR="$RPM_BUILD_ROOT%{_sbindir}"
 cd ..
 
 install %{SOURCE1}	$RPM_BUILD_ROOT/etc/pam.d/radius
