@@ -4,7 +4,7 @@ Summary(pl):	Serwer RADIUS
 Summary(pt_BR):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
-Release:	4
+Release:	5
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
