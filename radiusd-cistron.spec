@@ -37,7 +37,8 @@ Serwer RADIUS z wieloma funkcjami. W skrócie:
 - buforuje wszystkie pliki konfiguracyjne w pamiêci
 - trzyma listê zalogowanych u¿ytkowników (plik radutmp)
 - program radwho mo¿e byæ zainstalowany jako fingerd
-- loguje zarówno w uniksowym formacie wtmp i logach szczegó³owych RADIUS
+- loguje zarówno w uniksowym formacie wtmp i logach szczegó³owych
+  RADIUS
 - obs³uguje parametr Simultaneous-Use = X - tak, w ten sposób mo¿esz
   unikn±æ podwójnego logowania!
 
