@@ -20,6 +20,7 @@ URL:		http://www.radius.cistron.nl/
 Requires(post,preun):	/sbin/chkconfig
 Requires(post):	fileutils
 Requires:	logrotate
+Requires:	pam >= 0.77.3
 Provides:	radius
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	radius
