@@ -17,10 +17,9 @@ Patch1:		%{name}-prefix.patch
 Patch2:		%{name}-buff_over_fix.patch
 Patch3:		%{name}-makefile.patch
 URL:		http://www.radius.cistron.nl/
-Requires:	logrotate
-Requires(post):	/sbin/chkconfig
+Requires(post,preun):	/sbin/chkconfig
 Requires(post):	fileutils
-Requires(preun):/sbin/chkconfig
+Requires:	logrotate
 Provides:	radius
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	radius
@@ -153,4 +152,4 @@ fi
 %attr(640,root,root) %ghost /var/log/radutmp
 %attr(640,root,root) %ghost /var/log/radwtmp
 %attr(640,root,root) %ghost /var/log/radius.log
-%attr(644,root,root) %{_mandir}/*/*
+%{_mandir}/*/*
