@@ -13,6 +13,7 @@ Source2:	%{name}.init
 Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.radius.cistron.nl/
+Requires:	logrotate
 Requires(post):	/sbin/chkconfig
 Requires(preun):/sbin/chkconfig
 Requires(post):	fileutils
