@@ -147,7 +147,7 @@ fi
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/radius
-%attr(640,root,root) /etc/logrotate.d/radius
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/logrotate.d/radius
 %attr(750,root,root) %dir /var/log/radacct
 %attr(750,root,root) %dir %{_sysconfdir}/raddb
 %attr(640,root,root) %ghost /var/log/radutmp
