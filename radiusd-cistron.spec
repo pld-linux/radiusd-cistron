@@ -1,4 +1,4 @@
-# $Revision: 1.4 $
+# $Revision: 1.5 $
 Summary:	RADIUS Server 
 Name:		radiusd-cistron
 Version:	1.6.1
@@ -11,7 +11,7 @@ Source1:	%{name}.pamd
 Source2:	%{name}.initd
 Source3:	%{name}.logrotate
 URL:		http://www.miquels.cistrom.nl/radius
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides:	radius
 Obsoletes:	radius
 
