@@ -1,0 +1,33 @@
+diff -Naur radiusd-cistron-1.6.6/scripts/radwatch radiusd-cistron-1.6.6.oden/scripts/radwatch
+--- radiusd-cistron-1.6.6/scripts/radwatch	1999-09-19 00:10:43.000000000 +0200
++++ radiusd-cistron-1.6.6.oden/scripts/radwatch	2002-05-04 16:06:46.000000000 +0200
+@@ -8,7 +8,7 @@
+ #
+ 
+ MAILTO=root
+-RADIUSD=/usr/local/sbin/radiusd
++RADIUSD=/usr/sbin/radiusd
+ 
+ exec >> /var/log/radwatch.log 2>&1
+ 
+diff -Naur radiusd-cistron-1.6.6/src/checkrad.pl radiusd-cistron-1.6.6.oden/src/checkrad.pl
+--- radiusd-cistron-1.6.6/src/checkrad.pl	2001-11-10 13:42:03.000000000 +0100
++++ radiusd-cistron-1.6.6.oden/src/checkrad.pl	2002-05-04 16:03:45.000000000 +0200
+@@ -36,7 +36,7 @@
+ #		$naspass is the location of your NAS admin password file
+ #
+ 
+-$prefix		= "/usr/local";
++$prefix		= "/usr";
+ $localstatedir	= "/var";
+ $logdir		= "${localstatedir}/log";
+ $sysconfdir	= "/etc";
+@@ -62,7 +62,7 @@
+ #	Prefer a locally installed copy.
+ #
+ BEGIN {
+-	unshift @INC, "/usr/local/lib/site_perl";
++	unshift @INC, "/usr/lib/perl5/site_perl/";
+ 
+ 	eval "use Net::Telnet 3.00;";
+ 	$::HAVE_NET_TELNET = ($@ eq "");
