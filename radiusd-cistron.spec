@@ -1,5 +1,7 @@
 Summary:	RADIUS Server
+Summary(es):	Servidor RADIUS con muchas funciones
 Summary(pl):	Serwer RADIUS
+Summary(pt_BR):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
 Release:	1
@@ -18,30 +20,56 @@ Obsoletes:	radius
 
 %description
 RADIUS server with a lot of functions. Short overview:
-- PAM support
-- Supports access based on huntgroups
-- Multiple DEFAULT entries in users file
-- All users file entries can optionally "fall through"
-- Caches all config files in-memory
-- Keeps a list of logged in users (radutmp file)
-- "radwho" program can be installed as "fingerd"
-- Logs both UNIX "wtmp" file format and RADIUS detail logfiles
+
+- PAM support,
+- Supports access based on huntgroups,
+- Multiple DEFAULT entries in users file,
+- All users file entries can optionally "fall through",
+- Caches all config files in-memory,
+- Keeps a list of logged in users (radutmp file),
+- "radwho" program can be installed as "fingerd",
+- Logs both UNIX "wtmp" file format and RADIUS detail logfiles,
 - Supports Simultaneous-Use = X parameter. Yes, this means that you
-  can now prevent double logins!
+  can now prevent double logins!.
+
+%description -l es
+Servidor RADIUS con muchas funciones. Visión general:
+
+- Soporta acceso basado en huntgroups,
+- Múltiples entradas POR DEFECTO en el archivo de usuarios,
+- Hace el caché de todos los archivos de configuración en memoria,
+- Mantienen una lista de los usuarios conectados (archivo radutmp),
+- El programa radwho puede ser instalado como fingerd,
+- Registra tanto en el formato UNIX wtmp como en el RADIUS detail
+- Soporta el parámetro Simultaneous-Use = X. ¡Sí!, esto significa que
+  puedes evitar logins duplos.
 
 %description -l pl
 Serwer RADIUS z wieloma funkcjami. W skrócie:
-- obs³uga PAM
-- obs³uga dostêpu bazuj±ca na huntgroups
-- wiele wpisów DEFAULT w pliku users
-- wszystkie wpisy w pliku users mog± byæ opcjonalnie "fall through"
-- buforuje wszystkie pliki konfiguracyjne w pamiêci
-- trzyma listê zalogowanych u¿ytkowników (plik radutmp)
-- program radwho mo¿e byæ zainstalowany jako fingerd
+
+- obs³uga PAM,
+- obs³uga dostêpu bazuj±ca na huntgroups,
+- wiele wpisów DEFAULT w pliku users,
+- wszystkie wpisy w pliku users mog± byæ opcjonalnie "fall through",
+- buforuje wszystkie pliki konfiguracyjne w pamiêci,
+- trzyma listê zalogowanych u¿ytkowników (plik radutmp),
+- program radwho mo¿e byæ zainstalowany jako fingerd,
 - loguje zarówno w uniksowym formacie wtmp i logach szczegó³owych
-  RADIUS
+  RADIUS,
 - obs³uguje parametr Simultaneous-Use = X - tak, w ten sposób mo¿esz
-  unikn±æ podwójnego logowania!
+  unikn±æ podwójnego logowania!.
+
+%description -l pt_BR
+Servidor RADIUS com muitas funções. Visão geral:
+
+- Suporta acesso baseado em huntgroups,
+- Multiplas entradas DEFAULT no arquivo de usuarios,
+- Faz cache de todos os arquivos de configuracão em memoria,
+- Mantem uma lista dos usuarios conectados (arquivo radutmp),
+- O programa radwho pode ser instalado como fingerd,
+- Registra tanto no formato UNIX wtmp quanto no RADIUS detail,
+- Suporta o parametro Simultaneous-Use = X. Sim, isto significa, que
+  você pode evitar logins duplos!, inclusive com o Cyclades PathRas.
 
 %prep
 %setup -q
