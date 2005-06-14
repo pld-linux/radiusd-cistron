@@ -17,6 +17,7 @@ Patch1:		%{name}-prefix.patch
 Patch2:		%{name}-buff_over_fix.patch
 Patch3:		%{name}-makefile.patch
 URL:		http://www.radius.cistron.nl/
+BuildRequires:	pam-devel >= 0.77.3
 Requires(post,preun):	/sbin/chkconfig
 Requires(post):	fileutils
 Requires:	logrotate
@@ -142,12 +143,12 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc doc/{ChangeLog,FAQ.txt,README*} todo/TODO
-%attr(640,root,root) %config %verify(not size mtime md5) %{_sysconfdir}/raddb/*
-%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/pam.d/radius
+%attr(640,root,root) %config %verify(not md5 mtime size) %{_sysconfdir}/raddb/*
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/radius
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/radius
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/logrotate.d/radius
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/radius
 %attr(750,root,root) %dir /var/log/radacct
 %attr(750,root,root) %dir %{_sysconfdir}/raddb
 %attr(640,root,root) %ghost /var/log/radutmp
