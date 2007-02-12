@@ -1,7 +1,7 @@
 Summary:	RADIUS Server
-Summary(es.UTF-8):   Servidor RADIUS con muchas funciones
-Summary(pl.UTF-8):   Serwer RADIUS
-Summary(pt_BR.UTF-8):   Servidor RADIUS com muitas funcoes
+Summary(es.UTF-8):	Servidor RADIUS con muchas funciones
+Summary(pl.UTF-8):	Serwer RADIUS
+Summary(pt_BR.UTF-8):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
 Release:	7
