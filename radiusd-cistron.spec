@@ -1,7 +1,7 @@
 Summary:	RADIUS Server
-Summary(es):	Servidor RADIUS con muchas funciones
-Summary(pl):	Serwer RADIUS
-Summary(pt_BR):	Servidor RADIUS com muitas funcoes
+Summary(es.UTF-8):   Servidor RADIUS con muchas funciones
+Summary(pl.UTF-8):   Serwer RADIUS
+Summary(pt_BR.UTF-8):   Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.6
 Release:	7
@@ -40,44 +40,44 @@ RADIUS server with a lot of functions. Short overview:
 - Supports Simultaneous-Use = X parameter. Yes, this means that you
   can now prevent double logins!.
 
-%description -l es
-Servidor RADIUS con muchas funciones. Visión general:
+%description -l es.UTF-8
+Servidor RADIUS con muchas funciones. VisiÃ³n general:
 
 - Soporta acceso basado en huntgroups,
-- Múltiples entradas POR DEFECTO en el archivo de usuarios,
-- Hace el caché de todos los archivos de configuración en memoria,
+- MÃºltiples entradas POR DEFECTO en el archivo de usuarios,
+- Hace el cachÃ© de todos los archivos de configuraciÃ³n en memoria,
 - Mantienen una lista de los usuarios conectados (archivo radutmp),
 - El programa radwho puede ser instalado como fingerd,
 - Registra tanto en el formato UNIX wtmp como en el RADIUS detail
-- Soporta el parámetro Simultaneous-Use = X. ¡Sí!, esto significa que
+- Soporta el parÃ¡metro Simultaneous-Use = X. Â¡SÃ­!, esto significa que
   puedes evitar logins duplos.
 
-%description -l pl
-Serwer RADIUS z wieloma funkcjami. W skrócie:
+%description -l pl.UTF-8
+Serwer RADIUS z wieloma funkcjami. W skrÃ³cie:
 
-- obs³uga PAM,
-- obs³uga dostêpu bazuj±ca na huntgroups,
-- wiele wpisów DEFAULT w pliku users,
-- wszystkie wpisy w pliku users mog± byæ opcjonalnie "fall through",
-- buforuje wszystkie pliki konfiguracyjne w pamiêci,
-- trzyma listê zalogowanych u¿ytkowników (plik radutmp),
-- program radwho mo¿e byæ zainstalowany jako fingerd,
-- loguje zarówno w uniksowym formacie wtmp i logach szczegó³owych
+- obsÅ‚uga PAM,
+- obsÅ‚uga dostÄ™pu bazujÄ…ca na huntgroups,
+- wiele wpisÃ³w DEFAULT w pliku users,
+- wszystkie wpisy w pliku users mogÄ… byÄ‡ opcjonalnie "fall through",
+- buforuje wszystkie pliki konfiguracyjne w pamiÄ™ci,
+- trzyma listÄ™ zalogowanych uÅ¼ytkownikÃ³w (plik radutmp),
+- program radwho moÅ¼e byÄ‡ zainstalowany jako fingerd,
+- loguje zarÃ³wno w uniksowym formacie wtmp i logach szczegÃ³Å‚owych
   RADIUS,
-- obs³uguje parametr Simultaneous-Use = X - tak, w ten sposób mo¿esz
-  unikn±æ podwójnego logowania!.
+- obsÅ‚uguje parametr Simultaneous-Use = X - tak, w ten sposÃ³b moÅ¼esz
+  uniknÄ…Ä‡ podwÃ³jnego logowania!.
 
-%description -l pt_BR
-Servidor RADIUS com muitas funções. Visão geral:
+%description -l pt_BR.UTF-8
+Servidor RADIUS com muitas funÃ§Ãµes. VisÃ£o geral:
 
 - Suporta acesso baseado em huntgroups,
 - Multiplas entradas DEFAULT no arquivo de usuarios,
-- Faz cache de todos os arquivos de configuracão em memoria,
+- Faz cache de todos os arquivos de configuracÃ£o em memoria,
 - Mantem uma lista dos usuarios conectados (arquivo radutmp),
 - O programa radwho pode ser instalado como fingerd,
 - Registra tanto no formato UNIX wtmp quanto no RADIUS detail,
 - Suporta o parametro Simultaneous-Use = X. Sim, isto significa, que
-  você pode evitar logins duplos!, inclusive com o Cyclades PathRas.
+  vocÃª pode evitar logins duplos!, inclusive com o Cyclades PathRas.
 
 %prep
 %setup  -q
