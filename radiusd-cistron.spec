@@ -3,18 +3,18 @@ Summary(es.UTF-8):	Servidor RADIUS con muchas funciones
 Summary(pl.UTF-8):	Serwer RADIUS
 Summary(pt_BR.UTF-8):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
-Version:	1.6.6
-Release:	7
+Version:	1.6.8
+Release:	1
 License:	GPL
 Group:		Networking/Daemons/Radius
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
-# Source0-md5:	16084870890fd2ec577dbe183b51a379
+# Source0-md5:	66709d6db81f5f77db82de27fe42c700
 Source1:	%{name}.pamd
 Source2:	%{name}.init
 Source3:	%{name}.logrotate
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-prefix.patch
-Patch2:		%{name}-buff_over_fix.patch
+Patch2:		%{name}-pid.patch
 Patch3:		%{name}-makefile.patch
 URL:		http://www.radius.cistron.nl/
 BuildRequires:	pam-devel >= 0.77.3
@@ -154,4 +154,6 @@ fi
 %attr(640,root,root) %ghost /var/log/radutmp
 %attr(640,root,root) %ghost /var/log/radwtmp
 %attr(640,root,root) %ghost /var/log/radius.log
+%dir %{_datadir}/radius
+%{_datadir}/radius/dictionary.*
 %{_mandir}/*/*
