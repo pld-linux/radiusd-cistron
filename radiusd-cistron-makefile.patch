@@ -1,11 +1,29 @@
---- radiusd-cistron-1.6.6/src/Make.inc.orig	Wed Jul  9 19:54:45 2003
-+++ radiusd-cistron-1.6.6/src/Make.inc	Wed Jul  9 19:55:03 2003
-@@ -141,7 +141,7 @@
+diff -burNp radiusd-cistron-1.6.8/src/Make.inc radiusd-cistron-1.6.8-dud/src/Make.inc
+--- radiusd-cistron-1.6.8/src/Make.inc	2003-04-10 12:51:47.000000000 +0200
++++ radiusd-cistron-1.6.8-dud/src/Make.inc	2009-03-14 13:06:38.234932599 +0100
+@@ -137,7 +137,7 @@ install:
  	done
  	test -n "$(DBM)" || rm -f $(DESTDIR)$(MANDIR)/man8/builddbm.8rad
  	@if [ -d $(DESTDIR)/etc/pam.d/ ] && [ ! -f $(DESTDIR)/etc/pam.d/radius ]; then \
--		-$(INSTALL) -m 644 ../redhat/radiusd-pam /etc/pam.d/radius;\
+-		$(INSTALL) -m 644 ../redhat/radiusd-pam /etc/pam.d/radius;\
 +		$(INSTALL) -m 644 ../redhat/radiusd-pam $(DESTDIR)/etc/pam.d/radius;\
  	fi
- 	# Install the config files
+ 	@# Install the config files
  	@echo; echo "Creating/updating files in $(RADIUS_DIR)"; \
+diff -burNp radiusd-cistron-1.6.8/src/Makefile radiusd-cistron-1.6.8-dud/src/Makefile
+--- radiusd-cistron-1.6.8/src/Makefile	2006-02-08 12:55:35.000000000 +0100
++++ radiusd-cistron-1.6.8-dud/src/Makefile	2009-03-14 13:27:21.774808041 +0100
+@@ -31,9 +31,9 @@ LIBS	= $(LSHADOW)
+ INSTALL = install
+ DINSTALL = install -d
+ 
+-BINDIR  = /usr/local/bin
+-SBINDIR = /usr/local/sbin
+-MANDIR  = /usr/local/man
+-SHAREDIR = /usr/local/share/radius
++BINDIR  = $(DESTDIR)/usr/bin
++SBINDIR = $(DESTDIR)/usr/sbin
++MANDIR  = $(DESTDIR)/usr/share/man
++SHAREDIR = $(DESTDIR)/usr/share/radius
+ 
+ include Make.inc
