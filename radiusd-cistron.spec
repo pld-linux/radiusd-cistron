@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Serwer RADIUS
 Summary(pt_BR.UTF-8):	Servidor RADIUS com muitas funcoes
 Name:		radiusd-cistron
 Version:	1.6.8
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Daemons/Radius
 Source0:	ftp://ftp.radius.cistron.nl/pub/radius/%{name}-%{version}.tar.gz
@@ -86,6 +86,8 @@ Servidor RADIUS com muitas funções. Visão geral:
 %patch2 -p1
 %patch3 -p1
 
+sed -i -e 's# -s # #g' src/Make.inc
+
 %build
 cd src
 %{__make} \
@@ -93,7 +95,8 @@ cd src
 	PAM="-DPAM" \
 	PAMLIB="-lpam -ldl" \
 	LCRYPT="-lcrypt" \
-	CFLAGS="%{rpmcflags}"
+        LDFLAGS="%{rpmldflags}" \
+	CFLAGS="%{rpmcflags} %{rpmcflags}"
 cd ..
 
 %install
